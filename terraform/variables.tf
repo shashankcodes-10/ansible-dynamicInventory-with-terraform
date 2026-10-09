@@ -17,6 +17,13 @@ variable "volume_size" {
   default     = 10
 }
 
+variable "ssh_key_path" {
+  description = "Path to the SSH private key on the Ansible control node"
+  type        = string
+  default     = "~/keys/terra-key-ansible"
+}
+
+
 variable "instances" {
 
   description = "Map of instance names to AMI IDs, SSH users, and OS family"
