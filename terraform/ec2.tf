@@ -1,6 +1,6 @@
 resource "aws_key_pair" "key_pain" {
   key_name   = var.key_name
-  public_key = file("${path.module}/ansible-terraform.pub")
+  public_key = file("ansible-terraform.pub")
 }
 
 data "aws_vpc" "default" {
