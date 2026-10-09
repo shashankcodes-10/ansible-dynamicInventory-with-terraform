@@ -1,0 +1,9 @@
+- name: update packages
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+- name: install docker
+  apt:
+    name: docker.io
+    state: present
+          

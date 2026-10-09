@@ -1,0 +1,9 @@
+- name: updating packages in amazon
+  dnf:
+     update_cache: yes
+
+- name: installing docker in amazon
+  dnf:
+     name: docker
+     state: present
+     update_cache: yes

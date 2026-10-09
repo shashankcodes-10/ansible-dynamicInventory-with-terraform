@@ -1,0 +1,5 @@
+---
+# defaults file for roles/docker
+
+docker_users: []
+docker_service_enabled: true
