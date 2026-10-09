@@ -1,4 +1,4 @@
-resource "aws_key_pair" "key_pain" {
+resource "aws_key_pair" "key_pair" {
   key_name   = var.key_name
   public_key = file("ansible-terraform.pub")
 }
@@ -50,7 +50,7 @@ resource "aws_instance" "my_instance" {
 
   ami                    = each.value.ami
   instance_type          = each.value.instance_type
-  key_name               = aws_key_pair.ansible.key_name
+  key_name               = aws_key_pair.key_pair.key_name
   vpc_security_group_ids = [aws_security_group.ansible_lab.id]
 
   root_block_device {

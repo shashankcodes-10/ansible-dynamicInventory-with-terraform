@@ -8,7 +8,7 @@ variable "instance_type" {
 variable "key_name" {
   description = "SSH key pair name"
   type        = string
-  default     = "terra-key-ansible"
+  default     = "ansible-terraform"
 }
 
 variable "volume_size" {
