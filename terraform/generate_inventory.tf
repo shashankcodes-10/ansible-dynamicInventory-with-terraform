@@ -12,8 +12,6 @@ locals {
   amazon_hosts        = { for name, inst in local.inventory : name => inst if inst.os_family == "amazon" }
 }
 
-# Teaching inventory — used FROM the control node.
-# Control node manages itself locally and reaches workers over PRIVATE IPs.
 resource "local_file" "ansible_inventory" {
   content = templatefile("${path.module}/templates/inventory.tpl", {
     control        = local.control_hosts
@@ -23,6 +21,18 @@ resource "local_file" "ansible_inventory" {
   })
 
   filename        = "${path.module}/../inventories/dev/hosts.ini"
+  file_permission = "0644"
+}
+
+resource "local_file" "bootstrap_inventory" {
+  content = templatefile("${path.module}/templates/inventory2.tpl", {
+    ubuntu_workers = local.ubuntu_worker_hosts
+    redhat         = local.redhat_hosts
+    amazon         = local.amazon_hosts
+    ssh_key_path   = var.ssh_key_path
+  })
+
+  filename        = "${path.module}/../inventories/dev/host2.ini"
   file_permission = "0644"
 }
 
